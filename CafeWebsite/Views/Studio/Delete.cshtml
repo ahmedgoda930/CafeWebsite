@@ -1,0 +1,43 @@
+﻿@model CafeWebsite.Models.Studio
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="card">
+    <div class="header">
+        <h2 class="title">Delete MainDishe</h2>
+    </div>
+    <div class="content">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-control">
+                    <label>Category : </label>
+                    <label>
+                        @Html.DisplayFor(model => model.StudioCat.Name)
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <img src="~/Uploads/@Html.DisplayFor(model => model.URL)" class="img-box" id="b-img" />
+                </div>
+            </div>
+        </div>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="row text-center">
+                <div class="col-md-6">
+                    <a class="btn btn-default" href="/Studio/Index">Back To List</a>
+                </div>
+                <div class="col-md-6">
+                    <input type="submit" value="Delete" class="btn btn-primary" />
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+

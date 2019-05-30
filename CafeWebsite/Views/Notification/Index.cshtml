@@ -1,0 +1,74 @@
+﻿@model CafeWebsite.Models.NotificationViewModel
+@{
+    ViewBag.Title = "Notifications";
+}
+
+<h2>Notifications</h2>
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="card">
+            <div class="header">
+                <h3 class="title">Subscribes'List</h3>
+            </div>
+            <div class="content table-responsive table-full-width">
+
+                <table class="table table-bordered  table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th style="width:250px">Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Subscribes)
+                        {
+                            <tr>
+                                <td>@item.Email</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <div class="card-footor">
+                    <label>Count : </label>
+                    <label class="count">@Model.Subscribes.Count()</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="card">
+            <div class="header">
+                <h2 class="title">Contacts'List</h2>
+            </div>
+            <div class="content table-responsive table-full-width">
+
+                <table class="table table-bordered  table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th style="">Email</th>
+                            <th style="">Name</th>
+                            <th style="">Phone</th>
+                            <th style="width:350px">Message</th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Contacts)
+                        {
+                            <tr>
+                                <td>@item.Email</td>
+                                <td>@item.Name</td>
+                                <td>@item.Phone</td>
+                                <td>@item.Message</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <div class="card-footor">
+                    <label>Count : </label>
+                    <label class="count">@Model.Contacts.Count()</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

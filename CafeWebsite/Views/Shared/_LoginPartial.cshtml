@@ -1,0 +1,65 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "" }))
+    {
+    @Html.AntiForgeryToken()
+
+    @*<ul class="nav navbar-nav navbar-right">
+        <li>
+            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+        </li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+    </ul>*@
+        <ul class="nav navbar-nav navbar-right">
+            @*Dropdownlist*@
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <p>
+                        @User.Identity.GetUserName()
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Logout</a></li>
+                    <li><a href="/Manage/ChangePassword">Change Password</a></li>
+                </ul>
+            </li>
+            <li class="separator hidden-lg"></li>
+        </ul>
+
+        @*<div class="account-wrap">
+            <div class="account-item clearfix js-item-menu">
+                <div class="image">
+                    <img src="~/images/icon/avatar-01.jpg" alt="John Doe" />
+                </div>
+                <div class="content">
+                    <a class="js-acc-btn" href="#">john doe</a>
+                </div>
+                <div class="account-dropdown js-dropdown">
+                    <div class="info clearfix">
+                    </div>
+                    <div class="account-dropdown__body">
+                        <div class="account-dropdown__item">
+                            <a href="#">
+                                <i class="zmdi zmdi-account"></i>Account
+                            </a>
+                        </div>
+                    </div>
+                    <div class="account-dropdown__footer">
+                        <a >
+                            <i class="zmdi zmdi-power"></i>Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+    }
+}
+else
+{
+    @*<ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("", "", "", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Log in", "", "", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>*@
+}

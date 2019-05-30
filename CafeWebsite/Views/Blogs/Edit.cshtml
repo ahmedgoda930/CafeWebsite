@@ -1,0 +1,79 @@
+﻿@model CafeWebsite.Models.Blogs
+
+@{
+    ViewBag.Title = "Edit";
+}
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+<script src="~/Scripts/ckeditor/adapters/jquery.js"></script>
+<div class="card">
+    <div class="header">
+        <h2 class="title">Edit Blog</h2>
+    </div>
+    <div class="content">
+
+        @using (Html.BeginForm("Edit", "Blogs", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.ID)
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Blog Title : </label>
+                        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Blog Date : </label>
+                        @*@Html.EditorFor(model => model.date, new { htmlAttributes = new { @class = "form-control"} })*@
+                        <input type="date" data-date="" data-date-formate="dd/MM/yyyy" name="date" value="@Html.DisplayFor(model => model.date)" class="form-control" id="datepicker" />
+                        @Html.ValidationMessageFor(model => model.date, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Blog Image : </label>
+                        <img src="~/Uploads/@Html.DisplayFor(model => model.URL)" class="img-box" id="b-img" />
+                        <input type="file" value="@Html.DisplayFor(model => model.URL)" name="URL" class="form-control" onchange="readURL(this);" accept="image/jpg, image/jpeg, image/png" />
+                        @Html.ValidationMessageFor(model => model.URL, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Blog Content : </label>
+                <textarea class="form-control" name="Content" id="txtcontent">@Html.DisplayFor(model => model.Content)</textarea>
+                @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="row text-center">
+                <div class="col-md-6">
+                    <a class="btn btn-default" href="/Blogs/Index">Back To List</a>
+                </div>
+                <div class="col-md-6">
+                    <input type="submit" value="Edit Blog" class="btn btn-primary" />
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#b-img')
+                    .attr('src', e.target.result)
+                    .height(200);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    CKEDITOR.replace("txtcontent");
+    $(function () {
+        //$('input[type=datetime]').datetimepicker({ dateFormat: 'yy-mm-dd', timeFormat: 'hh:mm', changeMonth: true, changeYear: true, showAnim: 'slideDown' });
+    });
+</script>

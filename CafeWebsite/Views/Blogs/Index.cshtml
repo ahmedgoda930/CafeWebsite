@@ -1,0 +1,42 @@
+﻿@model IEnumerable<CafeWebsite.Models.Blogs>
+@{
+    ViewBag.Title = "Index";
+}
+<div class="card">
+    <div class="header">
+        <h2 class="title">Blogs'List</h2>
+        <h3 class="category">@Html.ActionLink("Write New Blog", "Create")</h3>
+    </div>
+    <div class="content table-responsive table-full-width">
+
+        <table class="table table-bordered  table-hover table-striped">
+            <thead>
+                <tr>
+                    <th style="width:250px">Title</th>
+                    <th style="width:150px">Date</th>
+                    <th style="width:250px">Image</th>
+                    <th class="op-width">Operations</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+            {
+                    <tr>
+                        <td>@item.Title</td>
+                        <td>@item.date</td>
+                        <td class="text-center"><img src="~/Uploads/@item.URL" alt="@item.Title" title="@item.Title" class="img-tbl"/></td>
+                        <td>
+                            <a href="/Blogs/Edit/@item.ID" class="btn btn-primary btn-tbl"><i class="fa fa-edit"></i></a>
+                            <a href="/Blogs/Delete/@item.ID" class="btn btn-danger btn-tbl"><i class="fa fa-remove"></i></a>
+                            <a href="/Blogs/Details/@item.ID" class="btn btn-info btn-tbl"><i class="fa fa-file"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="card-footor">
+            <label>Count : </label>
+            <label class="count">@Model.Count()</label>
+        </div>
+    </div>
+</div>

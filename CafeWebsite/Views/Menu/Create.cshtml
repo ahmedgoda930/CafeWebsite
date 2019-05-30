@@ -1,0 +1,57 @@
+﻿@model CafeWebsite.Models.Menu
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="card">
+    <div class="header">
+        <h2 class="title">Insert New Photo</h2>
+
+    </div>
+    <div class="content">
+        @using (Html.BeginForm("Create", "Menu", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <label>
+                @Html.ValidationSummary()
+            </label>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Category : </label>
+                        @Html.DropDownListFor(m => m.FK_CatID, ViewBag.Cat as SelectList, htmlAttributes: new { @class = "form-control text-right" })
+                        @Html.ValidationMessageFor(m => m.FK_CatID, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label>Name : </label>
+                        @Html.EditorFor(m => m.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Price : </label>
+                        @Html.EditorFor(m => m.Price, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(m => m.Price, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label>Content : </label>
+                        @Html.EditorFor(m => m.Content, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(m => m.Content, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-md-6">
+                    <a class="btn btn-default" href="/Menu/Index">Back To List</a>
+                </div>
+                <div class="col-md-6">
+                    <input type="submit" value="Create Item" class="btn btn-primary" />
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,69 @@
+﻿body {
+
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    /*padding-left: 15px;
+    padding-right: 15px;*/
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+/*.dl-horizontal dt {
+    white-space: normal;
+}*/
+
+/* Set width on the form input elements since they're 100% wide by default */
+/*input,
+select,
+textarea {
+    max-width: 280px;
+}*/
+.div-cont{
+    margin-top:25px;
+    box-shadow:1px 1px 0 0 #ccc,1px 1px 0 0 #ccc;
+    padding:10px;
+}
+.op-width{
+    width:200px
+}
+.img-box{
+    width:100%;
+    height:150px;
+    -webkit-box-shadow: 0px 0px 4px 5px #ccc;
+    -moz-box-shadow: 0px 0px 4px 5px #ccc;
+    box-shadow: 0px 0px 4px 5px #ccc;
+    margin-bottom:15px
+}
+.img-tbl{
+    width:250px;
+    height:70px;
+    -webkit-box-shadow: 0px 0px 4px 5px #ccc;
+    -moz-box-shadow: 0px 0px 4px 5px #ccc;
+    box-shadow: 0px 0px 4px 5px #ccc;
+}
+.btn-tbl{
+    /*width:25px;*/
+    /*height:25px;
+    /*padding:10px !important;*/
+    text-align:center;
+    font-size:15px
+}
+.img-box-ch{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+}
+.card-footor{
+    padding-left:20px;
+}
+.card-footor label:first-child{
+    font-weight:bold;
+    font-size:25px;
+}
+.card-footor .count{
+    color:#000;
+    font-size:25px;
+}

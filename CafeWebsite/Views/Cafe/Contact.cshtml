@@ -1,0 +1,83 @@
+﻿@model CafeWebsite.Models.Contacts
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<!-- Title Page -->
+<section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(../../images/about.jpeg);">
+    <h2 class="tit6 t-center">
+        Contacts
+    </h2>
+</section>
+
+	<!-- Contact form -->
+<section class="section-contact bg1-pattern p-t-90 p-b-113">
+    <div class="container">
+        <h3 class="tit7 t-center p-b-62 p-t-105">
+            Send us a Message
+        </h3>
+        @using (Html.BeginForm("Contact", "Cafe", FormMethod.Post, new { enctype = "multipart/form-data", @class = "wrap-form-reservation size22 m-l-r-auto" }))
+        {
+            @Html.AntiForgeryToken()
+            <label>
+                @Html.ValidationSummary()
+                </label>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <!-- Name -->
+                            <span class="txt9">
+                                Name
+                            </span>
+
+                            <div class="wrap-inputname size12 bo2 bo-rad-10 m-t-3 m-b-23">
+                                @Html.EditorFor(m => m.Name, new { htmlAttributes = new { @class = "bo-rad-10 sizefull txt10 p-l-20", @placeholder = "Name" } })
+                                @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <!-- Email -->
+                            <span class="txt9">
+                                Email
+                            </span>
+
+                            <div class="wrap-inputemail size12 bo2 bo-rad-10 m-t-3 m-b-23">
+                                @Html.EditorFor(m => m.Email, new { htmlAttributes = new { @class = "bo-rad-10 sizefull txt10 p-l-20", @placeholder = "Email" } })
+                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <!-- Phone -->
+                            <span class="txt9">
+                                Phone
+                            </span>
+
+                            <div class="wrap-inputphone size12 bo2 bo-rad-10 m-t-3 m-b-23">
+                                @Html.EditorFor(m => m.Phone, new { htmlAttributes = new { @class = "bo-rad-10 sizefull txt10 p-l-20", @placeholder = "Phone" } })
+                                @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <!-- Message -->
+                            <span class="txt9">
+                                Message
+                            </span>
+                            @Html.TextAreaFor(m => m.Message, new { @class = "bo-rad-10 size35 bo2 txt10 p-l-20 p-t-15 m-b-10 m-t-3", @placeholder = "Message" })
+                            @Html.ValidationMessageFor(m => m.Message, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="wrap-btn-booking flex-c-m m-t-13">
+                        <!-- Button3 -->
+                        <button type="submit" class="btn3 flex-c-m size36 txt11 trans-0-4">
+                            Submit
+                        </button>
+                    </div>
+        }
+
+  
+</div>
+</section>

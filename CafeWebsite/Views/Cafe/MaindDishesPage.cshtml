@@ -1,0 +1,56 @@
+﻿@model IEnumerable<CafeWebsite.Models.MainDishes>
+@{
+    ViewBag.Title = "Maind Dishes";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<!-- Title Page -->
+<section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(../../images/about.jpeg);">
+    <h2 class="tit6 t-center">
+        Main Dishes
+    </h2>
+</section>
+<!-- Content page -->
+<section>
+    <div class="bread-crumb bo5-b p-t-17 p-b-17">
+        <div class="container">
+            <a href="index.html" class="txt27">
+                Home
+            </a>
+
+            <span class="txt29 m-l-10 m-r-10">/</span>
+
+            <a href="/Cafe/MaindDishesPage" class="txt27">
+                Main Dishes
+            </a>
+
+        </div>
+    </div>
+    <div class="dishes">
+        <div class="container">
+            <div class="row">
+                @foreach (var item in Model)
+            {
+                    <div class="col-md-4">
+                        <div class="dish-item">
+                            <div class="">
+                                <div class="hov-img-zoom pos-relative">
+                                    <a href="">
+                                        <img src="~/Uploads/@item.URL" alt="@item.Name">
+                                    </a>
+                                </div>
+                                <div class="text-blo4">
+                                    <p class="">
+                                        <a href="blog-detail.html" class="tit10">@item.Name</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</section>
+
